@@ -1,0 +1,57 @@
+@mixin flexColumn{
+  display: flex;
+  flex-direction: column;
+}
+$borderSize: 3px;
+
+.signIn {
+  border: $borderSize solid #8f03a9;
+}
+
+.signUp {
+  border: $borderSize solid #0554cb;
+}
+
+.signIn h1{
+  color: #8f03a9;
+}
+
+.signUp h1{
+  color: #0554cb;
+}
+
+.authentication-component {
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authentication-component span{
+  @include flexColumn;
+  height: 180px;
+  width: 250px;
+  background-color: white;
+  padding: 25px 20px 25px 20px
+}
+
+.authentication-component span h1{
+  text-align: center;
+}
+
+#authentication{
+  @include flexColumn;
+  justify-content: center;
+  height: 100%;
+}
+
+#btn{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+#btn a button{
+  margin-left: 10px;
+}

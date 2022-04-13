@@ -1,0 +1,18 @@
+<section class="authentication-component">
+    <span v-bind:class="{ 'signIn': type === 'signIn',
+         'signUp': type === 'signUp'}">
+        <h1 >{{type}}</h1>
+        <div id="authentication">
+            <label>username:</label>
+            <input v-model="username">
+            <label style="margin-top: 10px">password:</label>
+            <input v-model="password">
+        </div>
+        <div id="btn">
+            <button @click="authentication">confirm</button>
+            <router-link to="/">
+                <button>cancel</button>
+            </router-link>
+        </div>
+    </span>
+</section>

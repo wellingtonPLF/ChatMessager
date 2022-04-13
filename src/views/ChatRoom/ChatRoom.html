@@ -1,0 +1,19 @@
+<section class="chat-room">
+    <div id="chat">
+        <div id="subject">
+            <div>Chat Room</div>
+            <div @click="homePage" id="logOut">
+                <span>LogOut</span>
+            </div>
+        </div>
+        <div id="message-chat">
+            <div style="margin-left: 20px;">
+                <div v-for="usuario in usuarios">
+                    <div>*** {{usuario.name}} ***</div>
+                </div>
+            </div>
+            <input id="search" placeholder="message" autocomplete="off">
+        </div>
+        <div id="foot"></div>
+    </div>
+</section>
