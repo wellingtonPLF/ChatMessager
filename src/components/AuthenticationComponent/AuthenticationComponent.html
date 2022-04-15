@@ -4,10 +4,11 @@
         <h1 >{{type}}</h1>
         <div id="authentication">
             <label>username:</label>
-            <input v-model="username">
+            <input v-model="usuario.name">
             <label style="margin-top: 10px">password:</label>
-            <input v-model="password">
+            <input v-model="usuario.password">
         </div>
+        <div style="color: rgb(207, 7, 7); font-weight: bold;">{{invalido}}</div>
         <div id="btn">
             <button @click="authentication">confirm</button>
             <router-link to="/">

@@ -11,7 +11,7 @@ class UsuarioService {
   }
 
   async inserir (usuario) {
-    const { data } = await this.api.post('/usuarios/', usuario)
+    const { data } = await this.api.post('/usuarios', usuario)
     return data
   }
 
@@ -26,7 +26,7 @@ class UsuarioService {
   }
 
   async atualizar (usuario) {
-    const { data } = await this.api.put('/usuarios/', usuario)
+    const { data } = await this.api.put('/usuarios/', JSON.stringify(usuario))
     return data
   }
 }

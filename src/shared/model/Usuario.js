@@ -1,13 +1,6 @@
 export class Usuario {
-  constructor (name) {
-    this._name = name
-  }
-
-  get name () {
-    return this._name
-  }
-
-  set name (name) {
-    this._name = name
+  constructor (name, password) {
+    this.name = name
+    this.password = password
   }
 }

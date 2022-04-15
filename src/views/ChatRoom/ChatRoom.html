@@ -1,18 +1,19 @@
 <section class="chat-room">
     <div id="chat">
         <div id="subject">
-            <div>Chat Room</div>
+            <div @click="show_me">Chat Room</div>
             <div @click="homePage" id="logOut">
                 <span>LogOut</span>
             </div>
         </div>
         <div id="message-chat">
-            <div style="margin-left: 20px;">
-                <div v-for="usuario in usuarios">
-                    <div>*** {{usuario.name}} ***</div>
-                </div>
+            <div id="msg">
+                <ul v-for="msg in messages" style="display: flex;">
+                    <li style="font-weight: bold;">{{msg.name}}:</li>
+                    <div>&#160{{msg.description}}</div>
+                </ul>
             </div>
-            <input id="search" placeholder="message" autocomplete="off">
+            <input id="search" v-model="valueMessage" :placeholder="[[ valor ]]" autocomplete="off" v-on:keyup.enter="onEnter">
         </div>
         <div id="foot"></div>
     </div>
