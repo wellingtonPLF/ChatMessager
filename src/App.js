@@ -1,16 +1,12 @@
 export default {
   name: 'app',
-  data () {
-    return {
-    }
-  },
   channels: {
     ChatChannel: {
       connected () {
         console.log('I am connected.')
       },
       rejected () {},
-      received (data) {
+      received () {
         console.log('Message received')
       },
       disconnected () {}
@@ -18,10 +14,7 @@ export default {
   },
   mounted () {
     this.$cable.subscribe({
-      channel: 'ChatChannel',
-      room: 'public'
+      channel: 'ChatChannel'
     })
-  },
-  created () {
   }
 }

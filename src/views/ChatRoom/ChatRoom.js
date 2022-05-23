@@ -1,6 +1,5 @@
 import UsuarioService from '@/shared/service/UsuarioService'
 import MessageService from '@/shared/service/MessageService'
-import LocalStorage from '@/shared/utils/localStorage'
 import { Message } from '@/shared/model/Message'
 import { sortObjectArray } from '@/shared/utils/quickSort'
 
@@ -15,14 +14,27 @@ export default {
       messages: []
     }
   },
+  channels: {
+    ChatChannel: {
+      received (data) {
+        UsuarioService.pesquisarPorId(data.usuario).then(
+          it => {
+            this.messages.push({ description: data.description, id: data.usuario, name: it.name })
+            this.$nextTick(function () {
+              this.scrollDown()
+            })
+          }
+        )
+      }
+    }
+  },
   mounted () {
-    const idUser = LocalStorage.getToken()
-    UsuarioService.pesquisarPorId(idUser).then(
+    UsuarioService.pesquisarPorId(this.$Usuario.id).then(
       it => {
         this.valor = it.name + ': type your message!'
+        this.$Usuario.name = it.name
       }
     )
-
     MessageService.listar().then(
       it => {
         let contador = 0
@@ -33,8 +45,9 @@ export default {
               this.messages.push({ id: element.id, description: element.description, name: response.name })
               if (contador === it.length) {
                 sortObjectArray(this.messages)
-                const container = this.$el.querySelector('#msg')
-                container.scrollTop = container.scrollHeight
+                this.$nextTick(function () {
+                  this.scrollDown()
+                })
               }
             }
           )
@@ -43,15 +56,18 @@ export default {
     )
   },
   methods: {
-    homePage () {
-      LocalStorage.removeToken('usuario')
+    logOut () {
       this.$router.push('/')
     },
     show_me () {
       console.log(this.messages)
     },
+    scrollDown () {
+      const container = this.$el.querySelector('#msg')
+      container.scrollTop = container.scrollHeight - container.clientHeight
+    },
     onEnter (e) {
-      const mensagem = new Message(this.valueMessage, LocalStorage.getToken())
+      const mensagem = new Message(this.valueMessage, this.$Usuario.id)
       MessageService.inserir(mensagem).then(
         it => {
           this.valueMessage = ''

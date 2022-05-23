@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import ActionCableVue from 'actioncable-vue'
 import router from './router'
+import { Usuario } from './shared/model/Usuario'
 
 Vue.use(ActionCableVue, {
   debug: true,
@@ -9,6 +10,8 @@ Vue.use(ActionCableVue, {
   connectionUrl: 'ws://localhost:5000',
   connectImmediately: true
 })
+
+Vue.prototype.$Usuario = new Usuario()
 
 Vue.config.productionTip = false
 

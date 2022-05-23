@@ -1,6 +1,5 @@
 import { Usuario } from '@/shared/model/Usuario'
 import UsuarioService from '@/shared/service/UsuarioService.js'
-import LocalStorage from '@/shared/utils/localStorage'
 
 export default {
   name: 'authentication-component',
@@ -32,7 +31,8 @@ export default {
               return undefined
             })[0]
             if (user !== undefined) {
-              LocalStorage.setToken(user.id)
+              this.$Usuario.id = user.id
+              this.$Usuario.name = user.name
               this.$router.push('/chatroom')
             } else {
               this.invalido = 'usuario invalido!'
