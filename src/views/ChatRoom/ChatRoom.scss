@@ -1,6 +1,5 @@
 .chat-room {
     height: 100%;
-    background-color: black;
     display: flex;
     justify-content: center;
 }
@@ -8,66 +7,251 @@
 #chat{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
     background-color: white;
-    width: 45vw;
+    width: 100%;
 }
 
 #subject{
     display: flex;
     align-items: center;
-    background-color: #8f03a9;
+    background-color: #25062b;
+    height: 60px;
+    border-bottom: 2px solid white;
+    position: relative;
     color:white;
-    padding: 15px 0px 15px 0px;
 }
 
 #subject div:first-child{
-    flex-grow: 1;
-    padding-left: 70px;
+    width: 100%;
     cursor: default;
     font-weight: bolder;
+    font-family: 'Orbitron', sans-serif;
     text-align: center;
 }
 
-#search{
-    background-color: rgb(247, 247, 247);
-    border-radius: 20px;
-    width: 90%;
-    padding: 6px 0px 6px 10px;
-    margin-top: 10px;
-    margin-left: 14px;
-}
-
 #logOut{
-    width: 70px;
+    width: 80px;
+    padding: 3px;
+    position: absolute;
+    right: 20px;
     text-align: center;
     cursor: pointer;
     background-color: white;
     border-radius: 20px;
-    padding: 2px 0px 2px 0px;
-    margin-right: 10px;
+    font-family: 'Alkatra', sans-serif;    
 }
 
 #logOut span{
     font-weight: bolder;
-    color: #8f03a9;
+    color: #25062b;;
 }
 
+#chat > div:nth-child(2) {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 60px);
+}
+
+#leftBar {
+    font-family: 'Orbitron', sans-serif;
+    background-color: rgb(46 11 53 / 90%);
+}
+
+$paddingSizeY: 12px;
+$paddingSizeW: 25px;
+
+#leftBar > div:first-child {
+    display: flex;
+    padding: $paddingSizeY $paddingSizeW;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+    height: calc(100% - 60px - ($paddingSizeY * 2));
+}
+
+#leftBar > div:last-child {
+    height: 50px;
+}
+// ------------------------------------------------------------------------------------------------------------ UserBlock
+.userBlock {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.userBlock > div {
+    display: flex;
+    align-items: flex-end;
+}
+
+$sizeUserBlock: 38px;
+
+.userBlock > div > div:first-child {
+    height: $sizeUserBlock;
+    width: $sizeUserBlock;
+    border-radius: 100%;
+    background: url("https://images.unsplash.com/photo-1612502169027-5a379283f9c0?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center/cover;
+    background-repeat: no-repeat;
+}
+
+.userBlock > div > div:last-child {
+    margin-left: 12px;
+    font-weight: 600;
+}
+
+.nameUser {
+    font-size: 17px;
+    color: #ff7ee3;
+}
+
+.emailUser {
+    font-size: 13px;
+    color: white;
+}
+// ------------------------------------------------------------------------------------------------------------ Profile
+#profile {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: #25062b;
+}
+
+#profile > div {
+    display: flex;
+    align-items: flex-end;
+    margin: auto;
+    width: 80%;
+}
+
+#profile > div > div:first-child {
+    height: $sizeUserBlock;
+    width: $sizeUserBlock;
+    position: relative;
+    border-radius: 100%;
+    background: url("https://images.unsplash.com/photo-1491604612772-6853927639ef?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center/cover;
+    background-repeat: no-repeat;
+}
+
+#profile > div > div:first-child > div {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 2px solid rgb(4, 197, 4);
+    background-color: rgb(4, 197, 4, 0.8);
+}
+
+#profile > div > div:last-child {
+    margin-left: 8px;
+    font-weight: 600;
+}
+
+
+#profileName{
+    font-size: 17px;
+    color: #ffd714;
+}
+
+#profileStatus{
+    font-size: 13px;
+    color: white;
+}
+// ------------------------------------------------------------------------------------------------------------ Mensagem|
 #message-chat{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    flex-grow: 1;
-    padding-bottom: 20px;
+    justify-content: space-around;
+    width: 100%
+}
+
+#message-chat > div {
+    padding: 5px 0px;
+    height: calc(100% - 75px);
 }
 
 #msg {
-    overflow-y: scroll; 
-    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 98%;
+    height: 100%;
 }
+
+#msgScroll{
+    overflow-y: auto;
+    color: #39343d;
+    font-family: 'Alkatra', sans-serif;
+}
+
+#msgScroll > div {
+    font-weight: 600;
+    width: 98%;
+    line-height: 30px;
+    margin: auto;
+    padding: 10px 0;
+    border-bottom: 2px solid #ebdaf9;
+}
+
+#msgScroll > div > div {
+    padding-left: 5px;
+}
+
+// ------------------------------------------------------------------------------------------------------------ 
+
+#search{
+    background-color: rgb(233, 233, 233);
+    border-radius: 10px;
+    border: unset;
+    width: 95%;
+    height: 30px;
+    font-weight: 600;
+    padding: 6px 0px 6px 16px;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(138, 101, 145, 0.3), 0 6px 20px 0 rgba(125, 74, 134, 0.3);
+}
+
+#search::placeholder {
+    color: rgb(176, 51, 255, 0.7)
+}
+
+
 
 #foot{
     background-color: #5b036b;
     padding: 25px;
+}
+
+*::-webkit-scrollbar, .about::-webkit-scrollbar {
+    width: 1vh;
+}
+
+*::-webkit-scrollbar-thumb, .about::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background-color: #b8b8b8;
+}
+
+*::-webkit-scrollbar-track, .about::-webkit-scrollbar-track {
+    background-color: #f9f9f9;
+}
+
+#leftBar > div:first-child::-webkit-scrollbar, .about::-webkit-scrollbar {
+    width: 0;
+}
+
+@media screen and (max-width: 650px) {
+    #leftBar {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #subject div:first-child {
+        padding-left: 10vw;
+        text-align: start !important;
+    }
 }

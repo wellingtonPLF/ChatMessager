@@ -1,8 +1,8 @@
 <div class="home">
-    <div>Chat Message</div>
-    <div style="display: flex; justify-content: space-around; width: 200px">
-        <router-link to="/signIn">
-            <button>sign in</button>
+    <div>Chat Messager</div>
+    <div style="display: flex;">
+        <router-link :to="(value != 'enter') ? '/signIn' : '/chatroom'">
+            <button>{{value}}</button>
         </router-link>
         <router-link to="/signUp">
             <button>sign up</button>

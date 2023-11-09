@@ -1,20 +1,55 @@
 <section class="chat-room">
     <div id="chat">
         <div id="subject">
-            <div @click="show_me">Chat Room</div>
+            <div>Chat Room</div>
             <div @click="logOut" id="logOut">
-                <span>LogOut</span>
+                <span>signOut</span>
             </div>
         </div>
-        <div id="message-chat">
-            <div id="msg">
-                <ul v-for="msg in messages" style="display: flex;">
-                    <li style="font-weight: bold;">{{msg.name}}:</li>
-                    <div>&#160{{msg.description}}</div>
-                </ul>
+        <div>
+            <div id="leftBar">
+                <div>
+                    <div v-for="item in usuarios" class="userBlock" v-if="item.id != $Usuario.id">
+                        <div>
+                            <div></div>
+                            <div>
+                                <div class="nameUser">{{item.name}}</div>
+                                <div class="emailUser">{{item.email}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="profile">
+                        <div>
+                            <div>
+                                <div></div>
+                            </div>
+                            <div>
+                                <div id="profileName">{{$Usuario.name}}</div>
+                                <div id="profileStatus">online</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <input id="search" v-model="valueMessage" :placeholder="[[ valor ]]" autocomplete="off" v-on:keyup.enter="onEnter">
+            <div id="message-chat">
+                <div>
+                    <div id="msg">
+                        <div id="msgScroll">
+                            <div  v-for="msg in messages">
+                                <!--  -->
+                                <div>
+                                    <span :style="`color: ${(msg.name == $Usuario.name)? '#b033ff': ''}`">
+                                        [{{checkDate(msg.dateTime, "date")}} - {{checkDate(msg.dateTime, "time")}}] {{msg.name}}: </span>
+                                    <span>{{msg.description}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input id="search" v-model="valueMessage" placeholder="Type Your Message. . ." autocomplete="off" v-on:keyup.enter="onEnter">
+            </div>
         </div>
-        <div id="foot"></div>
     </div>
 </section>

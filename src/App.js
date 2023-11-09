@@ -1,5 +1,11 @@
 export default {
   name: 'app',
+  data () {
+    return {
+      screenHeight: window.innerHeight,
+      window_Width: screen.width
+    }
+  },
   channels: {
     ChatChannel: {
       connected () {

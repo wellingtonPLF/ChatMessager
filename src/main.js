@@ -7,7 +7,7 @@ import { Usuario } from './shared/model/Usuario'
 Vue.use(ActionCableVue, {
   debug: true,
   debugLevel: 'error',
-  connectionUrl: 'ws://localhost:5000',
+  connectionUrl: 'ws://192.168.0.7:5000',
   connectImmediately: true
 })
 

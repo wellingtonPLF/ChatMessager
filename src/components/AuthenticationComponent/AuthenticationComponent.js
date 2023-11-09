@@ -1,5 +1,6 @@
 import { Usuario } from '@/shared/model/Usuario'
 import UsuarioService from '@/shared/service/UsuarioService.js'
+import LocalStorageService from '@/shared/utils/localStorage.js'
 
 export default {
   name: 'authentication-component',
@@ -13,12 +14,6 @@ export default {
       invalido: ''
     }
   },
-  computed: {
-
-  },
-  mounted () {
-
-  },
   methods: {
     authentication () {
       if (this.type === 'signIn') {
@@ -31,24 +26,23 @@ export default {
               return undefined
             })[0]
             if (user !== undefined) {
-              this.$Usuario.id = user.id
-              this.$Usuario.name = user.name
+              LocalStorageService.setToken(user.id)
               this.$router.push('/chatroom')
             } else {
               this.invalido = 'usuario invalido!'
             }
           }
         ).catch(
-          (e) => {
+          (_) => {
             console.error("BackEnd isn't Up...")
             this.invalido = 'server offline...'
           }
         )
       } else {
-        if (this.usuario.name !== undefined && this.usuario.password !== undefined) {
+        if (this.usuario.name !== undefined && this.usuario.password !== undefined && this.usuario.email !== undefined) {
           UsuarioService.inserir(this.usuario).then(
-            it => {
-              this.$router.push('/signIn').then(r => console.log('Usuario Inserido!'))
+            _ => {
+              this.$router.push('/signIn').then(__ => console.log('Usuario Inserido!'))
             }
           )
         } else {

@@ -1,29 +1,61 @@
 .home{
   display: flex;
-  background-color: black;
+  // background-color: black;
+  background-image: url("https://images.unsplash.com/photo-1558031380-8391a871b373?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;  
+  background-size: cover;
   justify-content: center;
+  font-family: "Black Ops One";
   align-items: center;
   flex-direction: column;
 }
 
 .home div:first-child{
   color: white;
+  text-align: center;
   font-size:70px;
 }
 
 .home button{
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.6);
   margin-top: 10px;
-  padding: 8px 20px 8px 20px;
+  cursor: pointer;
+  border: unset;
+  border-radius: 8px;
+  width: 100px;
+  font-size: 16px;
+  font-family: 'Orbitron', sans-serif;
+  height: 43px;
 }
 
 .home a:first-child button{
-  color: #ac05ca;
+  color: #da5af1;
   font-weight: 600;
 }
 
+.home a:first-child button:hover{
+  color: #d300f8;
+}
+
+.home a:nth-child(2) button:hover{
+  color: #0066ff;
+}
+
 .home a:nth-child(2) button{
-  color: #0554cb;
+  color: #74a5ef;
+  margin-left: 15px;
   font-weight: 600;
+}
+
+.home button:hover {
+  background-color: white;
+}
+
+
+@media screen and (max-width: 450px) {
+  .home div:first-child {
+    font-size: 15vw;
+  }
 }

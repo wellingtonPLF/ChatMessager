@@ -2,18 +2,17 @@
     <span v-bind:class="{ 'signIn': type === 'signIn',
          'signUp': type === 'signUp'}">
         <h1 >{{type}}</h1>
-        <div id="authentication">
-            <label>username:</label>
-            <input v-model="usuario.name">
-            <label style="margin-top: 10px">password:</label>
-            <input v-model="usuario.password">
-        </div>
-        <div style="color: rgb(207, 7, 7); font-weight: bold;">{{invalido}}</div>
-        <div id="btn">
-            <button @click="authentication">confirm</button>
-            <router-link to="/">
-                <button>cancel</button>
-            </router-link>
-        </div>
+        <form method="POST" @submit.prevent="authentication">
+            <div id="authentication">
+                <input required type="text" placeholder="Name" v-model="usuario.name" autocomplete="false">
+                <input v-if="type === 'signUp'" required type="email" placeholder="Email" v-model="usuario.email" autocomplete="false">
+                <input required type="password" placeholder="Password" v-model="usuario.password" autocomplete="false">
+            </div>
+            <div style="color: rgb(207, 7, 7); font-weight: bold;">{{invalido}}</div>
+            <div id="btn">
+                <input type="submit" value="confirm" />
+                <router-link to="/">cancel</router-link>
+            </div>
+        </form>
     </span>
 </section>

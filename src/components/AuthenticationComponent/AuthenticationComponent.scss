@@ -4,12 +4,12 @@
 }
 $borderSize: 3px;
 
-.signIn {
-  border: $borderSize solid #8f03a9;
+.signIn, .signIn #authentication input {
+  box-shadow: 0 4px 8px 0 rgba(138, 101, 145, 0.3), 0 6px 20px 0 rgba(125, 74, 134, 0.3);
 }
 
-.signUp {
-  border: $borderSize solid #0554cb;
+.signUp, .signUp #authentication input {
+  box-shadow: 0 4px 8px 0 rgba(31, 82, 158, 0.3), 0 6px 20px 0 rgba(31, 82, 158, 0.3);
 }
 
 .signIn h1{
@@ -22,7 +22,7 @@ $borderSize: 3px;
 
 .authentication-component {
   height: 100%;
-  background-color: black;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,14 +30,17 @@ $borderSize: 3px;
 
 .authentication-component span{
   @include flexColumn;
-  height: 180px;
   width: 250px;
+  margin-inline: 10px;
   background-color: white;
-  padding: 25px 20px 25px 20px
+  border-radius: 10px;
+  padding: 50px;
 }
 
 .authentication-component span h1{
   text-align: center;
+  margin: 0px 0px 30px 0px;
+  font-family: 'Alkatra', sans-serif;
 }
 
 #authentication{
@@ -46,12 +49,71 @@ $borderSize: 3px;
   height: 100%;
 }
 
+#authentication input {
+  border-radius: 30px;
+  height: 30px;
+  padding-left: 15px;
+  border: unset;
+  margin-bottom: 20px;
+}
+
+#authentication input:focus {
+  outline: unset;
+}
+
 #btn{
   display: flex;
   justify-content: flex-end;
+  height: 50px;
   margin-top: 10px;
 }
 
-#btn a button{
+#btn input, #btn a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48%;
+  height: 30px;
+  border: unset;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: unset;
+  font-family: "Orbitron", sans-serif;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.signIn #btn input:hover, .signIn #btn a:hover{
+  border: 2px solid #8f03a9;
+}
+
+.signUp #btn input:hover, .signUp #btn a:hover{
+  border: 2px solid #0554cb;
+}
+
+.signIn #btn input, .signIn #btn a{
+  color: #8f03a9;
+  box-shadow: 0 4px 8px 0 rgba(138, 101, 145, 0.3), 0 6px 20px 0 rgba(125, 74, 134, 0.3);
+}
+
+.signUp #btn input, .signUp #btn a{
+  color: #0554cb;
+  box-shadow: 0 4px 8px 0 rgba(31, 82, 158, 0.3), 0 6px 20px 0 rgba(31, 82, 158, 0.3);
+}
+
+#btn a{
+  text-decoration: unset;
   margin-left: 10px;
+}
+
+@media screen and (max-width: 320px) {
+  .authentication-component span{
+    width: 55vw;
+    padding: 15vw;
+  }
+
+  #btn input, #btn a {
+    font-size: 4.5vw;
+  }
 }

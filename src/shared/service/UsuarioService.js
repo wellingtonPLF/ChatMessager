@@ -1,32 +1,33 @@
-import axios from 'axios'
+import { Usuario } from '../model/Usuario'
+import api from './_axiosConfig'
 
 class UsuarioService {
   constructor () {
-    this.api = axios.create({ baseURL: 'http://localhost:3000' })
+    this.path = '/usuarios'
   }
 
   async listar () {
-    const { data } = await this.api.get('/usuarios.json')
+    const { data } = await api.get(`${this.path}.json`)
     return data
   }
 
   async inserir (usuario) {
-    const { data } = await this.api.post('/usuarios', usuario)
+    const { data } = await api.post(this.path, Usuario.refract(usuario))
     return data
   }
 
   async remover (id) {
-    const { data } = await this.api.delete(`/usuarios/${id}.json`)
+    const { data } = await api.delete(`${this.path}/${id}.json`)
     return data
   }
 
   async pesquisarPorId (id) {
-    const { data } = await this.api.get(`/usuarios/${id}.json`)
+    const { data } = await api.get(`${this.path}/${id}.json`)
     return data
   }
 
   async atualizar (usuario) {
-    const { data } = await this.api.put('/usuarios/', JSON.stringify(usuario))
+    const { data } = await api.put(`${this.path}/`, JSON.stringify(usuario))
     return data
   }
 }
